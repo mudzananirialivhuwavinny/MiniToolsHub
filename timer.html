@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timer - MiniTools Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="container">
+
+            <h1>MiniTools Hub</h1>
+
+            <p>Simple tools for everyday stuff.</p>
+
+        </div>
+
+    </header>
+
+
+    <main class="timer-page">
+
+        <div class="timer">
+
+            <h2>Timer</h2>
+
+            <div id="timerDisplay">05:00</div>
+
+            <div class="timer-inputs">
+
+                <input
+                    type="number"
+                    id="minutesInput"
+                    min="0"
+                    placeholder="Minutes"
+                >
+
+                <input
+                    type="number"
+                    id="secondsInput"
+                    min="0"
+                    max="59"
+                    placeholder="Seconds"
+                >
+
+            </div>
+
+            <div class="timer-buttons">
+
+                <button onclick="startTimer()">Start</button>
+
+                <button onclick="pauseTimer()">Pause</button>
+
+                <button onclick="resetTimer()">Reset</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <p>© 2026 MiniTools Hub</p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

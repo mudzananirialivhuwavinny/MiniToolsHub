@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="MiniTools Hub Calculator — a fast and simple online calculator."
+    >
+
+    <title>Calculator — MiniTools Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">M</span>
+                <span>MiniTools<span class="brand-accent">.</span></span>
+            </a>
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#tools">
+                    Tools
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Calculator -->
+
+    <main class="tool-page">
+
+        <div class="tool-container">
+
+            <a href="index.html" class="back-link">
+                ← Back to Hub
+            </a>
+
+            <div class="tool-header">
+
+                <p class="section-label">
+                    MINITOOLS / 01
+                </p>
+
+                <h1>Calculator</h1>
+
+                <p>
+                    Quick calculations without the clutter.
+                </p>
+
+            </div>
+
+
+            <div class="calculator">
+
+                <div class="calculator-display">
+
+                    <input
+                        type="text"
+                        id="display"
+                        readonly
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <div class="calculator-buttons">
+
+                    <button onclick="clearDisplay()" class="special">
+                        C
+                    </button>
+
+                    <button onclick="deleteLast()" class="special">
+                        ⌫
+                    </button>
+
+                    <button onclick="addToDisplay('/')" class="operator">
+                        ÷
+                    </button>
+
+                    <button onclick="addToDisplay('*')" class="operator">
+                        ×
+                    </button>
+
+
+                    <button onclick="addToDisplay('7')">
+                        7
+                    </button>
+
+                    <button onclick="addToDisplay('8')">
+                        8
+                    </button>
+
+                    <button onclick="addToDisplay('9')">
+                        9
+                    </button>
+
+                    <button onclick="addToDisplay('-')" class="operator">
+                        −
+                    </button>
+
+
+                    <button onclick="addToDisplay('4')">
+                        4
+                    </button>
+
+                    <button onclick="addToDisplay('5')">
+                        5
+                    </button>
+
+                    <button onclick="addToDisplay('6')">
+                        6
+                    </button>
+
+                    <button onclick="addToDisplay('+')" class="operator">
+                        +
+                    </button>
+
+
+                    <button onclick="addToDisplay('1')">
+                        1
+                    </button>
+
+                    <button onclick="addToDisplay('2')">
+                        2
+                    </button>
+
+                    <button onclick="addToDisplay('3')">
+                        3
+                    </button>
+
+                    <button onclick="calculate()" class="equals">
+                        =
+                    </button>
+
+
+                    <button
+                        onclick="addToDisplay('0')"
+                        class="zero-button"
+                    >
+                        0
+                    </button>
+
+                    <button onclick="addToDisplay('.')">
+                        .
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <p class="tool-note">
+                Everything runs directly in your browser.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="brand footer-brand">
+                <span class="brand-mark">M</span>
+                <span>MiniTools<span class="brand-accent">.</span></span>
+            </div>
+
+            <p>
+                Built with curiosity &amp; code.
+            </p>
+
+            <p>
+                © 2026 MiniTools Hub
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
