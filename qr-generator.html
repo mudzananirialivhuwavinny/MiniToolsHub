@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="MiniTools Hub QR Code Generator — create QR codes from text or URLs."
+    >
+
+    <title>QR Code Generator — MiniTools Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">M</span>
+                <span>MiniTools<span class="brand-accent">.</span></span>
+            </a>
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
+                <a href="index.html#about">About</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="tool-page">
+
+        <div class="tool-container">
+
+            <a href="index.html" class="back-link">
+                ← Back to Hub
+            </a>
+
+            <div class="tool-header">
+
+                <p class="section-label">
+                    MINITOOLS / 09
+                </p>
+
+                <h1>QR Code Generator</h1>
+
+                <p>
+                    Turn text or a URL into a scannable QR code.
+                </p>
+
+            </div>
+
+
+            <div class="simple-tool-card">
+
+                <div class="input-group">
+
+                    <label for="qrText">
+                        TEXT OR URL
+                    </label>
+
+                    <textarea
+                        id="qrText"
+                        class="qr-input"
+                        placeholder="https://example.com"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    onclick="generateQRCode()"
+                    class="primary-tool-button"
+                >
+                    Generate QR Code
+                </button>
+
+
+                <div
+                    id="qrCode"
+                    class="qr-result"
+                ></div>
+
+
+                <p
+                    id="qrMessage"
+                    class="qr-message"
+                ></p>
+
+            </div>
+
+
+            <p class="tool-note">
+                QR codes are generated using an online QR service.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="brand footer-brand">
+
+                <span class="brand-mark">M</span>
+
+                <span>
+                    MiniTools<span class="brand-accent">.</span>
+                </span>
+
+            </div>
+
+            <p>
+                Built with curiosity &amp; code.
+            </p>
+
+            <p>
+                © 2026 MiniTools Hub
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="MiniTools Hub Random Number Generator — generate random numbers quickly."
+    >
+
+    <title>Random Number Generator — MiniTools Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">M</span>
+                <span>MiniTools<span class="brand-accent">.</span></span>
+            </a>
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+                <a href="index.html#tools">Tools</a>
+                <a href="index.html#about">About</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <main class="tool-page">
+
+        <div class="tool-container">
+
+            <a href="index.html" class="back-link">
+                ← Back to Hub
+            </a>
+
+            <div class="tool-header">
+
+                <p class="section-label">
+                    MINITOOLS / 08
+                </p>
+
+                <h1>Random Number Generator</h1>
+
+                <p>
+                    Generate a random whole number between two values.
+                </p>
+
+            </div>
+
+
+            <div class="simple-tool-card">
+
+                <div class="converter-row">
+
+                    <div class="input-group">
+
+                        <label for="randomMin">
+                            MINIMUM
+                        </label>
+
+                        <input
+                            type="number"
+                            id="randomMin"
+                            placeholder="1"
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="randomMax">
+                            MAXIMUM
+                        </label>
+
+                        <input
+                            type="number"
+                            id="randomMax"
+                            placeholder="100"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    onclick="generateRandomNumber()"
+                    class="primary-tool-button"
+                >
+                    Generate Number
+                </button>
+
+
+                <div
+                    id="randomResult"
+                    class="tool-result"
+                >
+                    Your random number will appear here
+                </div>
+
+            </div>
+
+
+            <p class="tool-note">
+                Everything runs directly in your browser.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="brand footer-brand">
+
+                <span class="brand-mark">M</span>
+
+                <span>
+                    MiniTools<span class="brand-accent">.</span>
+                </span>
+
+            </div>
+
+            <p>
+                Built with curiosity &amp; code.
+            </p>
+
+            <p>
+                © 2026 MiniTools Hub
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
