@@ -442,4 +442,3 @@ function calculatePercentage() {
     result.textContent =
         `${percentage}% of ${number} = ${answer}`;
 }
-}
