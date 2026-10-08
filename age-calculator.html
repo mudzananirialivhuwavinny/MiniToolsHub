@@ -140,4 +140,54 @@
 </body>
 
 </html>
+// =========================
+// AGE CALCULATOR
+// =========================
+
+function calculateAge() {
+    const birthDateInput = document.getElementById("birthDate");
+    const ageResult = document.getElementById("ageResult");
+
+    if (!birthDateInput || !ageResult) {
+        return;
+    }
+
+    if (birthDateInput.value === "") {
+        ageResult.textContent = "Please enter your date of birth.";
+        return;
+    }
+
+    const birthDate = new Date(birthDateInput.value + "T00:00:00");
+    const today = new Date();
+
+    if (birthDate > today) {
+        ageResult.textContent = "Please enter a valid date of birth.";
+        return;
+    }
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    if (days < 0) {
+        months--;
+
+        const previousMonth = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            0
+        );
+
+        days += previousMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    ageResult.innerHTML = `
+        <strong>You are ${years} years, ${months} months and ${days} days old.</strong>
+    `;
+}
 ```
