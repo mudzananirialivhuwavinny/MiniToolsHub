@@ -7,7 +7,7 @@
 
     <meta
         name="description"
-        content="MiniTools Hub Random Number Generator — generate random numbers quickly."
+        content="MiniTools Hub Random Number Generator — generate random numbers instantly."
     >
 
     <title>Random Number Generator — MiniTools Hub</title>
@@ -18,7 +18,6 @@
 <body>
 
     <nav class="navbar">
-
         <div class="nav-container">
 
             <a href="index.html" class="brand">
@@ -27,17 +26,13 @@
             </a>
 
             <div class="nav-links">
-
                 <a href="index.html">Home</a>
                 <a href="index.html#tools">Tools</a>
                 <a href="index.html#about">About</a>
-
             </div>
 
         </div>
-
     </nav>
-
 
     <main class="tool-page">
 
@@ -50,71 +45,64 @@
             <div class="tool-header">
 
                 <p class="section-label">
-                    MINITOOLS / 08
+                    MINITOOLS / 07
                 </p>
 
                 <h1>Random Number Generator</h1>
 
                 <p>
-                    Generate a random whole number between two values.
+                    Generate a random number between any two values.
                 </p>
 
             </div>
 
-
             <div class="simple-tool-card">
 
-                <div class="converter-row">
+                <div class="input-group">
 
-                    <div class="input-group">
+                    <label for="minimum">
+                        MINIMUM NUMBER
+                    </label>
 
-                        <label for="randomMin">
-                            MINIMUM
-                        </label>
-
-                        <input
-                            type="number"
-                            id="randomMin"
-                            placeholder="1"
-                        >
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label for="randomMax">
-                            MAXIMUM
-                        </label>
-
-                        <input
-                            type="number"
-                            id="randomMax"
-                            placeholder="100"
-                        >
-
-                    </div>
+                    <input
+                        type="number"
+                        id="minimum"
+                        placeholder="1"
+                    >
 
                 </div>
 
+                <div class="input-group">
+
+                    <label for="maximum">
+                        MAXIMUM NUMBER
+                    </label>
+
+                    <input
+                        type="number"
+                        id="maximum"
+                        placeholder="100"
+                    >
+
+                </div>
 
                 <button
-                    onclick="generateRandomNumber()"
+                    type="button"
+                    id="generateButton"
                     class="primary-tool-button"
                 >
                     Generate Number
                 </button>
 
-
                 <div
                     id="randomResult"
                     class="tool-result"
+                    aria-live="polite"
                 >
                     Your random number will appear here
                 </div>
 
             </div>
-
 
             <p class="tool-note">
                 Everything runs directly in your browser.
@@ -123,7 +111,6 @@
         </div>
 
     </main>
-
 
     <footer class="footer">
 
@@ -151,8 +138,65 @@
 
     </footer>
 
+    <script>
 
-    <script src="script.js"></script>
+        const minimumInput =
+            document.getElementById("minimum");
+
+        const maximumInput =
+            document.getElementById("maximum");
+
+        const generateButton =
+            document.getElementById("generateButton");
+
+        const randomResult =
+            document.getElementById("randomResult");
+
+        generateButton.addEventListener("click", function () {
+
+            if (
+                minimumInput.value === "" ||
+                maximumInput.value === ""
+            ) {
+                randomResult.textContent =
+                    "Please enter both numbers.";
+
+                return;
+            }
+
+            const minimum =
+                Number(minimumInput.value);
+
+            const maximum =
+                Number(maximumInput.value);
+
+            if (
+                !Number.isFinite(minimum) ||
+                !Number.isFinite(maximum)
+            ) {
+                randomResult.textContent =
+                    "Please enter valid numbers.";
+
+                return;
+            }
+
+            if (minimum > maximum) {
+                randomResult.textContent =
+                    "Minimum must be smaller than maximum.";
+
+                return;
+            }
+
+            const randomNumber =
+                Math.floor(
+                    Math.random() * (maximum - minimum + 1)
+                ) + minimum;
+
+            randomResult.textContent =
+                "Random number: " + randomNumber;
+        });
+
+    </script>
 
 </body>
 
