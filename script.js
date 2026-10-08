@@ -498,3 +498,49 @@ function calculatePercentage() {
     result.textContent =
         `${percentage}% of ${number} = ${answer}`;
 }
+/* =========================
+   UNIT CONVERTER
+========================= */
+
+function convertUnits() {
+
+    const valueInput = document.getElementById("unitValue");
+    const fromUnit = document.getElementById("unitFrom");
+    const toUnit = document.getElementById("unitTo");
+    const result = document.getElementById("unitResult");
+
+    if (!valueInput || !fromUnit || !toUnit || !result) {
+        return;
+    }
+
+    if (valueInput.value === "") {
+        result.textContent = "Please enter a value.";
+        return;
+    }
+
+    const value = Number(valueInput.value);
+    const from = fromUnit.value;
+    const to = toUnit.value;
+
+    const meters = {
+        meters: 1,
+        kilometers: 1000,
+        centimeters: 0.01,
+        miles: 1609.344,
+        feet: 0.3048
+    };
+
+    if (!Number.isFinite(value)) {
+        result.textContent = "Please enter a valid number.";
+        return;
+    }
+
+    const answer =
+        value * meters[from] / meters[to];
+
+    result.textContent =
+        value + " " + from +
+        " = " +
+        Number(answer.toFixed(6)) +
+        " " + to;
+}
