@@ -1445,6 +1445,114 @@ a {
 
     .tool-result {
         font-size: 16px;
-    }
+    }/* =========================
+HOMEPAGE TOOL BUTTONS
+========================= */
+
+.section-description {
+color: #858c9f;
+font-size: 15px;
+line-height: 1.6;
+margin-top: 8px;
+margin-bottom: 30px;
+}
+
+.tool-card {
+min-height: 280px;
+}
+
+.tool-card h3 {
+font-family: "Space Grotesk", sans-serif;
+font-size: 23px;
+margin-bottom: 9px;
+}
+
+.tool-card p {
+color: #858c9f;
+font-size: 14px;
+line-height: 1.6;
+margin-bottom: 20px;
+}
+
+.tool-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+```
+width: fit-content;
+
+padding: 11px 16px;
+
+border-radius: 10px;
+
+background: linear-gradient(
+    135deg,
+    #7658ff,
+    #3acfea
+);
+
+color: #ffffff;
+
+text-decoration: none;
+
+font-size: 13px;
+font-weight: 600;
+
+transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+```
+
+}
+
+.tool-button:hover {
+transform: translateY(-2px);
+
+```
+box-shadow:
+    0 8px 25px rgba(118, 88, 255, 0.25);
+```
+
+}
+
+.tool-button:active {
+transform: scale(0.97);
+}
+
+/* Better spacing for the 9-card layout */
+
+.tools-grid {
+grid-template-columns: repeat(3, 1fr);
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+```
+.tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+}
+
+/* Phone */
+
+@media (max-width: 600px) {
+
+```
+.tools-grid {
+    grid-template-columns: 1fr;
+}
+
+.tool-button {
+    width: 100%;
+}
+```
+
+}
+
 
 }
