@@ -8,7 +8,6 @@ let firstNumber = "";
 let operator = "";
 let waitingForSecondNumber = false;
 
-
 function addToDisplay(value) {
 
     if (!display) {
@@ -149,11 +148,16 @@ if (textInput) {
             ? []
             : text.trim().split(/\s+/);
 
-        document.getElementById("wordCount").textContent =
-            words.length;
+        const wordCount = document.getElementById("wordCount");
+        const characterCount = document.getElementById("characterCount");
 
-        document.getElementById("characterCount").textContent =
-            text.length;
+        if (wordCount) {
+            wordCount.textContent = words.length;
+        }
+
+        if (characterCount) {
+            characterCount.textContent = text.length;
+        }
 
     });
 }
@@ -204,10 +208,10 @@ function startTimer() {
     if (timerSeconds === 300) {
 
         const minutes =
-            Number(minutesInput.value) || 0;
+            Number(minutesInput ? minutesInput.value : 0) || 0;
 
         const seconds =
-            Number(secondsInput.value) || 0;
+            Number(secondsInput ? secondsInput.value : 0) || 0;
 
         timerSeconds =
             (minutes * 60) + seconds;
@@ -290,16 +294,26 @@ function generatePassword() {
         return;
     }
 
-    const length =
-        Number(
-            document.getElementById("passwordLength").value
-        );
+    const lengthInput =
+        document.getElementById("passwordLength");
+
+    const numbersInput =
+        document.getElementById("includeNumbers");
+
+    const symbolsInput =
+        document.getElementById("includeSymbols");
+
+    if (!lengthInput || !numbersInput || !symbolsInput) {
+        return;
+    }
+
+    const length = Number(lengthInput.value);
 
     const includeNumbers =
-        document.getElementById("includeNumbers").checked;
+        numbersInput.checked;
 
     const includeSymbols =
-        document.getElementById("includeSymbols").checked;
+        symbolsInput.checked;
 
     let characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -350,64 +364,99 @@ function copyPassword() {
 
     navigator.clipboard.writeText(output.value);
 
-    message.textContent =
-        "Password copied!";
+    if (message) {
 
-    setTimeout(function () {
+        message.textContent =
+            "Password copied!";
 
-        message.textContent = "";
+        setTimeout(function () {
 
-    }, 2000);
-}/* =========================
+            message.textContent = "";
+
+        }, 2000);
+    }
+}
+
+
+/* =========================
    AGE CALCULATOR
 ========================= */
 
 function calculateAge() {
 
-    const birthDateInput = document.getElementById("birthDate");
-    const ageResult = document.getElementById("ageResult");
+    const birthDateInput =
+        document.getElementById("birthDate");
+
+    const ageResult =
+        document.getElementById("ageResult");
 
     if (!birthDateInput || !ageResult) {
         return;
     }
 
     if (birthDateInput.value === "") {
-        ageResult.textContent = "Please enter your date of birth.";
+
+        ageResult.textContent =
+            "Please enter your date of birth.";
+
         return;
     }
 
-    const birthDate = new Date(birthDateInput.value + "T00:00:00");
-    const today = new Date();
+    const birthDate =
+        new Date(birthDateInput.value + "T00:00:00");
+
+    const today =
+        new Date();
 
     if (birthDate > today) {
-        ageResult.textContent = "Please enter a valid date of birth.";
+
+        ageResult.textContent =
+            "Please enter a valid date of birth.";
+
         return;
     }
 
-    let years = today.getFullYear() - birthDate.getFullYear();
-    let months = today.getMonth() - birthDate.getMonth();
-    let days = today.getDate() - birthDate.getDate();
+    let years =
+        today.getFullYear() -
+        birthDate.getFullYear();
+
+    let months =
+        today.getMonth() -
+        birthDate.getMonth();
+
+    let days =
+        today.getDate() -
+        birthDate.getDate();
+
 
     if (days < 0) {
+
         months--;
 
-        const previousMonth = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            0
-        );
+        const previousMonth =
+            new Date(
+                today.getFullYear(),
+                today.getMonth(),
+                0
+            );
 
         days += previousMonth.getDate();
     }
 
+
     if (months < 0) {
+
         years--;
         months += 12;
     }
 
+
     ageResult.textContent =
         `You are ${years} years, ${months} months and ${days} days old.`;
-   /* =========================
+}
+
+
+/* =========================
    PERCENTAGE CALCULATOR
 ========================= */
 
@@ -426,18 +475,25 @@ function calculatePercentage() {
         return;
     }
 
-    const percentage = Number(percentageInput.value);
-    const number = Number(numberInput.value);
-
     if (
         percentageInput.value === "" ||
         numberInput.value === ""
     ) {
-        result.textContent = "Please enter both values.";
+
+        result.textContent =
+            "Please enter both values.";
+
         return;
     }
 
-    const answer = (percentage / 100) * number;
+    const percentage =
+        Number(percentageInput.value);
+
+    const number =
+        Number(numberInput.value);
+
+    const answer =
+        (percentage / 100) * number;
 
     result.textContent =
         `${percentage}% of ${number} = ${answer}`;
