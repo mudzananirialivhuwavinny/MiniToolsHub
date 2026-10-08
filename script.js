@@ -407,4 +407,39 @@ function calculateAge() {
 
     ageResult.textContent =
         `You are ${years} years, ${months} months and ${days} days old.`;
+   /* =========================
+   PERCENTAGE CALCULATOR
+========================= */
+
+function calculatePercentage() {
+
+    const percentageInput =
+        document.getElementById("percentageValue");
+
+    const numberInput =
+        document.getElementById("percentageNumber");
+
+    const result =
+        document.getElementById("percentageResult");
+
+    if (!percentageInput || !numberInput || !result) {
+        return;
+    }
+
+    const percentage = Number(percentageInput.value);
+    const number = Number(numberInput.value);
+
+    if (
+        percentageInput.value === "" ||
+        numberInput.value === ""
+    ) {
+        result.textContent = "Please enter both values.";
+        return;
+    }
+
+    const answer = (percentage / 100) * number;
+
+    result.textContent =
+        `${percentage}% of ${number} = ${answer}`;
+}
 }
