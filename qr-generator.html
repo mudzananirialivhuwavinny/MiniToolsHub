@@ -7,18 +7,40 @@
 
     <meta
         name="description"
-        content="MiniTools Hub QR Code Generator — create QR codes from text or URLs."
+        content="MiniTools Hub QR Generator — create QR codes quickly."
     >
 
-    <title>QR Code Generator — MiniTools Hub</title>
+    <title>QR Generator — MiniTools Hub</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .qr-output {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 220px;
+        }
+
+        .qr-output img {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .qr-message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
 
     <nav class="navbar">
-
         <div class="nav-container">
 
             <a href="index.html" class="brand">
@@ -27,17 +49,13 @@
             </a>
 
             <div class="nav-links">
-
                 <a href="index.html">Home</a>
                 <a href="index.html#tools">Tools</a>
                 <a href="index.html#about">About</a>
-
             </div>
 
         </div>
-
     </nav>
-
 
     <main class="tool-page">
 
@@ -50,17 +68,16 @@
             <div class="tool-header">
 
                 <p class="section-label">
-                    MINITOOLS / 09
+                    MINITOOLS / 06
                 </p>
 
-                <h1>QR Code Generator</h1>
+                <h1>QR Generator</h1>
 
                 <p>
-                    Turn text or a URL into a scannable QR code.
+                    Turn a website link or text into a QR code.
                 </p>
 
             </div>
-
 
             <div class="simple-tool-card">
 
@@ -70,29 +87,26 @@
                         TEXT OR URL
                     </label>
 
-                    <textarea
+                    <input
+                        type="text"
                         id="qrText"
-                        class="qr-input"
                         placeholder="https://example.com"
-                        rows="4"
-                    ></textarea>
+                    >
 
                 </div>
 
-
                 <button
-                    onclick="generateQRCode()"
+                    type="button"
+                    id="generateQR"
                     class="primary-tool-button"
                 >
                     Generate QR Code
                 </button>
 
-
                 <div
-                    id="qrCode"
-                    class="qr-result"
+                    id="qrOutput"
+                    class="qr-output"
                 ></div>
-
 
                 <p
                     id="qrMessage"
@@ -101,28 +115,24 @@
 
             </div>
 
-
             <p class="tool-note">
-                QR codes are generated using an online QR service.
+                Everything runs directly in your browser.
             </p>
 
         </div>
 
     </main>
 
-
     <footer class="footer">
 
         <div class="footer-container">
 
             <div class="brand footer-brand">
-
                 <span class="brand-mark">M</span>
 
                 <span>
                     MiniTools<span class="brand-accent">.</span>
                 </span>
-
             </div>
 
             <p>
@@ -137,8 +147,34 @@
 
     </footer>
 
+    <script>
+        const qrText = document.getElementById("qrText");
+        const generateQR = document.getElementById("generateQR");
+        const qrOutput = document.getElementById("qrOutput");
+        const qrMessage = document.getElementById("qrMessage");
 
-    <script src="script.js"></script>
+        generateQR.addEventListener("click", function () {
+
+            const text = qrText.value.trim();
+
+            if (text === "") {
+                qrOutput.innerHTML = "";
+                qrMessage.textContent = "Please enter some text or a URL.";
+                return;
+            }
+
+            const encodedText = encodeURIComponent(text);
+
+            const qrUrl =
+                "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="
+                + encodedText;
+
+            qrOutput.innerHTML =
+                '<img src="' + qrUrl + '" alt="Generated QR Code">';
+
+            qrMessage.textContent = "QR code generated!";
+        });
+    </script>
 
 </body>
 
