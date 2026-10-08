@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +18,6 @@
 <body>
 
     <nav class="navbar">
-
         <div class="nav-container">
 
             <a href="index.html" class="brand">
@@ -28,17 +26,12 @@
             </a>
 
             <div class="nav-links">
-
                 <a href="index.html">Home</a>
-
                 <a href="index.html#tools">Tools</a>
-
                 <a href="index.html#about">About</a>
-
             </div>
 
         </div>
-
     </nav>
 
 
@@ -77,6 +70,7 @@
                         type="number"
                         id="percentageValue"
                         placeholder="25"
+                        min="0"
                     >
 
                 </div>
@@ -98,7 +92,8 @@
 
 
                 <button
-                    onclick="calculatePercentage()"
+                    type="button"
+                    id="calculateButton"
                     class="primary-tool-button"
                 >
                     Calculate
@@ -108,6 +103,7 @@
                 <div
                     id="percentageResult"
                     class="tool-result"
+                    aria-live="polite"
                 >
                     Result will appear here
                 </div>
@@ -151,45 +147,57 @@
     </footer>
 
 
-    <script src="script.js"></script>
+    <script>
+        const percentageInput =
+            document.getElementById("percentageValue");
+
+        const numberInput =
+            document.getElementById("percentageNumber");
+
+        const calculateButton =
+            document.getElementById("calculateButton");
+
+        const percentageResult =
+            document.getElementById("percentageResult");
+
+
+        calculateButton.addEventListener("click", function () {
+
+            const percentage =
+                Number(percentageInput.value);
+
+            const number =
+                Number(numberInput.value);
+
+
+            if (
+                percentageInput.value === "" ||
+                numberInput.value === ""
+            ) {
+                percentageResult.textContent =
+                    "Please enter both values.";
+                return;
+            }
+
+
+            if (!Number.isFinite(percentage) ||
+                !Number.isFinite(number)) {
+
+                percentageResult.textContent =
+                    "Please enter valid numbers.";
+                return;
+            }
+
+
+            const answer =
+                (percentage / 100) * number;
+
+
+            percentageResult.textContent =
+                `${percentage}% of ${number} = ${answer}`;
+        });
+    </script>
 
 </body>
 
 </html>
-/* =========================
-   PERCENTAGE CALCULATOR
-========================= */
-
-function calculatePercentage() {
-
-    const percentageInput =
-        document.getElementById("percentageValue");
-
-    const numberInput =
-        document.getElementById("percentageNumber");
-
-    const result =
-        document.getElementById("percentageResult");
-
-    if (!percentageInput || !numberInput || !result) {
-        return;
-    }
-
-    const percentage = Number(percentageInput.value);
-    const number = Number(numberInput.value);
-
-    if (
-        percentageInput.value === "" ||
-        numberInput.value === ""
-    ) {
-        result.textContent =
-            "Please enter both values.";
-        return;
-    }
-
-    const answer = (percentage / 100) * number;
-
-    result.textContent =
-        `${percentage}% of ${number} = ${answer}`;
-}
-```
